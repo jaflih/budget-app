@@ -35,8 +35,6 @@ gem 'pg', '~> 1.1'
 gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
-gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -77,6 +75,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
