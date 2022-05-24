@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  subject { described_class.new(name: 'Clothes', icon: 'C') }
+  let(:seller) { User.create(name: 'Ally', email: 'test@test.com', password: '123456') }
+  subject { described_class.new(name: 'Clothes', icon: 'C', user_id: seller.id) }
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
@@ -25,5 +26,9 @@ RSpec.describe Category, type: :model do
   it 'is not valid if icon length is more than 20 characters' do
     subject.icon = 'i' * 40
     expect(subject).to_not be_valid
+  end
+
+  describe 'Associations' do
+    it { should belong_to(:user) }
   end
 end

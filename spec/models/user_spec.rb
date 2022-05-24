@@ -26,4 +26,8 @@ RSpec.describe User, type: :model do
     subject.name = 'a' * 40
     expect(subject).to_not be_valid
   end
+
+  describe 'Associations' do
+    it { should have_many(:categories) }
+  end
 end
