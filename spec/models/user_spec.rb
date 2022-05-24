@@ -29,5 +29,6 @@ RSpec.describe User, type: :model do
 
   describe 'Associations' do
     it { should have_many(:categories) }
+    it { should have_many(:exchanges).with_foreign_key('author_id') }
   end
 end
