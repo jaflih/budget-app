@@ -20,5 +20,6 @@ RSpec.describe Exchange, type: :model do
 
   describe 'Associations' do
     it { should belong_to(:author) }
+    it { should have_many(:categories).through(:slots) }
   end
 end

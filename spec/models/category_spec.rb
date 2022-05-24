@@ -30,5 +30,6 @@ RSpec.describe Category, type: :model do
 
   describe 'Associations' do
     it { should belong_to(:user) }
+    it { should have_many(:exchanges).through(:slots) }
   end
 end
