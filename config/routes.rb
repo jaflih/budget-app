@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :exchanges
+  resources :slots
   resources :categories
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
