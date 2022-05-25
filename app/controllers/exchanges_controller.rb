@@ -1,5 +1,6 @@
 class ExchangesController < ApplicationController
   before_action :set_exchange, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   # GET /exchanges or /exchanges.json
   def index
@@ -20,6 +21,7 @@ class ExchangesController < ApplicationController
   # POST /exchanges or /exchanges.json
   def create
     @exchange = Exchange.new(exchange_params)
+    @exchange.author = current_user
 
     respond_to do |format|
       if @exchange.save
@@ -64,6 +66,6 @@ class ExchangesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def exchange_params
-    params.require(:exchange).permit(:name, :amount, :author_id)
+    params.require(:exchange).permit(:name, :amount)
   end
 end
