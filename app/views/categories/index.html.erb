@@ -5,12 +5,9 @@
   <div class="bg-white flex justify-center py-2 text-black ">Gift credit</div>
   <div id="categories">
     <% @categories.each do |category| %>
-      <div class="bg-white flex p-5 m-6 py-8 text-black ">
-        <div class="basis-16"><%= category.icon%></div>
-        <div><%= category.name%></div>
-        <div>price</div>
+      <%= link_to exchanges_path do %>
         <%= render category %>
-      </div>
+      <%end%>
     <% end %>
   </div>
   <div class="bg-lime-500 flex justify-center py-2 text-white"><%= link_to "New category", new_category_path %></div>
