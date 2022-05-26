@@ -1,6 +1,23 @@
-<div class="grow flex justify-center items-center">
-  <h1 class="dark-grey text-4xl">Snapscan
-    <h1>
-    </div>
-    <div class="blue flex justify-center py-8 text-white hover:bg-blue-900">LOG IN</div>
-    <div class="flex justify-center py-8 grey hover:bg-slate-400 hover:text-white">SIGN UP</div>
+<section class="p-5">
+  <div class="grow flex justify-center items-center">
+    <h1 class="dark-grey text-4xl">Snapscan
+    </h1>
+  </div>
+  <div class="blue flex justify-center py-8 text-white hover:bg-blue-900">LOG IN</div>
+  <div class="flex justify-center py-8 grey hover:bg-slate-400 hover:text-white">SIGN UP</div>
+</section>
+<section>
+  <div class="blue flex justify-center py-4 text-white">CATEGORIES</div>
+  <div class="blue flex justify-center py-2 text-white ">Most Recent - Most ancien</div>
+  <div class="bg-white flex justify-center py-2 text-black ">Gift credit</div>
+  <div id="categories">
+    <% @categories.each do |category| %>
+      <div class="bg-white flex p-5 m-6 py-8 text-black ">
+        <div class="basis-16"><%= category.icon%></div>
+        <div><%= category.name%></div>
+        <div>price</div>
+      </div>
+    <% end %>
+  </div>
+  <div class="bg-lime-500 flex justify-center py-2 text-white">Add category</div>
+</section>
