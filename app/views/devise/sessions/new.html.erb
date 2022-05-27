@@ -1,0 +1,26 @@
+<section class="mx-auto h-screen flex flex-col justify-center items-center">
+  <div class="bg-white p-8">
+    <div class="grow flex  flex-col justify-center items-center">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'flex  flex-col') do |f| %>
+        <div class="field mb-8">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="field mb-8">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field mb-8">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+        <div class="actions blue p-6 text-white flex justify-center">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="flex justify-center py-8 grey hover:bg-slate-400 hover:text-white"><%= link_to 'SIGN UP', new_user_registration_path %></div>
+  </div>
+</section>
