@@ -1,13 +1,13 @@
-  <div class="blue flex justify-center py-4 text-white"><%= link_to "Back", exchanges_path %></div>
-
+<div class="blue flex justify-between p-6 text-white">
+  <div class="justify-self-start"><%= link_to "<", category_exchanges_path(@category) %></div>
+  <div>Create new exchange</div>
+  <%= button_to "X", destroy_user_session_path, method: :delete  %>
+</div>
+</div>
 <section class="mx-auto h-screen flex flex-col justify-center items-center">
   <div class="bg-white p-8">
     <div class="grow flex  flex-col justify-center items-center">
-<h1>New exchange</h1>
-<%= render "form", exchange: @exchange %>
-
+      <%= render "form",exchange: @exchange %>
     </div>
-
   </div>
 </section>
-

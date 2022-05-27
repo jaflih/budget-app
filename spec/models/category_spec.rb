@@ -23,8 +23,8 @@ RSpec.describe Category, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'is not valid if icon length is more than 20 characters' do
-    subject.icon = 'i' * 40
+  it 'is not valid if icon length is more than 256 characters' do
+    subject.icon = 'i' * 300
     expect(subject).to_not be_valid
   end
 

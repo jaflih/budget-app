@@ -19,25 +19,9 @@ RSpec.describe '/categories and user loggeg', type: :request do
     end
   end
 
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      category = Category.create! valid_attributes
-      get category_url(category)
-      expect(response).to be_successful
-    end
-  end
-
   describe 'GET /new' do
     it 'renders a successful response' do
       get new_category_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'renders a successful response' do
-      category = Category.create! valid_attributes
-      get edit_category_url(category)
       expect(response).to be_successful
     end
   end
@@ -52,7 +36,7 @@ RSpec.describe '/categories and user loggeg', type: :request do
 
       it 'redirects to the created category' do
         post categories_url, params: { category: valid_attributes }
-        expect(response).to redirect_to(category_url(Category.last))
+        expect(response).to redirect_to(categories_path)
       end
     end
 
@@ -67,52 +51,6 @@ RSpec.describe '/categories and user loggeg', type: :request do
         post categories_url, params: { category: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    end
-  end
-
-  describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
-        { name: 'Hobbies', icon: 'hobbies' }
-      end
-
-      it 'updates the requested category' do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: new_attributes }
-        category.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the category' do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: new_attributes }
-        category.reload
-        expect(response).to redirect_to(category_url(category))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: invalid_attributes }
-        skip('Can not resolve it')
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-  end
-
-  describe 'DELETE /destroy' do
-    it 'destroys the requested category' do
-      category = Category.create! valid_attributes
-      expect do
-        delete category_url(category)
-      end.to change(Category, :count).by(-1)
-    end
-
-    it 'redirects to the categories list' do
-      category = Category.create! valid_attributes
-      delete category_url(category)
-      expect(response).to redirect_to(categories_url)
     end
   end
 end
@@ -136,27 +74,9 @@ RSpec.describe '/categories and user not logged', type: :request do
     end
   end
 
-  describe 'GET /show' do
-    it 'redirects to the login page' do
-      category = Category.create! valid_attributes
-      get category_url(category)
-      expect(response).not_to be_successful
-      expect(response).to redirect_to(new_user_session_path)
-    end
-  end
-
   describe 'GET /new' do
     it 'redirects to the login page' do
       get new_category_url
-      expect(response).not_to be_successful
-      expect(response).to redirect_to(new_user_session_path)
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'redirects to the login page' do
-      category = Category.create! valid_attributes
-      get edit_category_url(category)
       expect(response).not_to be_successful
       expect(response).to redirect_to(new_user_session_path)
     end
@@ -175,44 +95,6 @@ RSpec.describe '/categories and user not logged', type: :request do
         post categories_url, params: { category: valid_attributes }
         expect(response).to redirect_to(new_user_session_path)
       end
-    end
-  end
-
-  describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
-        { name: 'Hobbies', icon: 'hobbies' }
-      end
-
-      it 'redirects to the login page' do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: new_attributes }
-        category.reload
-        expect(response).to redirect_to(new_user_session_path)
-      end
-
-      it 'redirects to the login page' do
-        category = Category.create! valid_attributes
-        patch category_url(category), params: { category: new_attributes }
-        category.reload
-        expect(response).to redirect_to(new_user_session_path)
-      end
-    end
-  end
-
-  describe 'DELETE /destroy' do
-    it 'redirects to the login page' do
-      category = Category.create! valid_attributes
-      expect do
-        delete category_url(category)
-      end.to change(Category, :count).by(0)
-      expect(response).to redirect_to(new_user_session_path)
-    end
-
-    it 'redirects to the login page' do
-      category = Category.create! valid_attributes
-      delete category_url(category)
-      expect(response).to redirect_to(new_user_session_path)
     end
   end
 end
