@@ -11,7 +11,7 @@ RSpec.describe 'home/home.html.erb', type: :system do
 
   it 'I can see the title of the page and the sign in link.' do
     visit root_path
-    expect(page).to have_content 'Snapscan'
+    expect(page).to have_content 'Forteresse'
     expect(page).to have_content 'LOG IN'
   end
 
@@ -21,7 +21,7 @@ RSpec.describe 'home/home.html.erb', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
   end
 end

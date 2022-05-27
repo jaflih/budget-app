@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'categories/1/exchanges/new', type: :system do
   before(:each) do
     ally = User.create(name: 'Ally', email: 'ally@recipe.com', password: '11111111')
-    @cat1 = Category.create(name: 'Category_1', icon: 'icon_1', user: ally)
+    @cat1 = Category.create(name: 'Category_1', icon: 'https://cdn-icons-png.flaticon.com/512/6968/6968996.png',
+                            user: ally)
   end
 
   after(:each) do
@@ -14,7 +15,7 @@ RSpec.describe 'categories/1/exchanges/new', type: :system do
     visit new_category_exchange_path @cat1
     expect(page).to_not have_content '<'
     expect(page).to_not have_content 'New exchange'
-    expect(page).to have_content 'LOG IN'
+    expect(page).to have_content 'Email'
   end
 
   it 'I can access this page if user is connected' do
@@ -29,7 +30,7 @@ RSpec.describe 'categories/1/exchanges/new', type: :system do
 
     expect(page).to have_content '<'
     expect(page).to have_content 'Create new exchange'
-    expect(page).to_not have_content 'LOG IN'
+    expect(page).to_not have_content 'Email'
   end
 
   it 'I can logout form the nes categories page' do
@@ -38,14 +39,14 @@ RSpec.describe 'categories/1/exchanges/new', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit new_category_exchange_path @cat1
 
     click_button 'X'
 
-    expect(page).to have_content 'Snapscan'
+    expect(page).to have_content 'Forteresse'
     expect(page).to_not have_content 'CATEGORIES'
   end
 
@@ -55,7 +56,7 @@ RSpec.describe 'categories/1/exchanges/new', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit new_category_exchange_path @cat1

@@ -4,8 +4,9 @@ RSpec.describe 'categories/1/exchanges', type: :system do
   before(:each) do
     ally = User.create(name: 'Ally', email: 'ally@recipe.com', password: '11111111')
     bob = User.create(name: 'Bob', email: 'bob@recipe.com', password: '11111111')
-    @cat1 = Category.create(name: 'Category_1', icon: 'icon_1', user: ally)
-    Category.create(name: 'Category_2', icon: 'icon_2', user: ally)
+    @cat1 = Category.create(name: 'Category_1', icon: 'https://cdn-icons-png.flaticon.com/512/6969/6969002.png',
+                            user: ally)
+    Category.create(name: 'Category_2', icon: 'https://cdn-icons-png.flaticon.com/512/6969/6969002.png', user: ally)
     @cat3 = Category.create(name: 'Category_3', icon: 'icon_3', user: bob)
 
     @ex1 = Exchange.create(name: 'transaction 1', amount: '20', author: ally)
@@ -24,7 +25,7 @@ RSpec.describe 'categories/1/exchanges', type: :system do
   it 'I can not access this page if user is not connected.' do
     visit category_exchanges_path @cat1
     expect(page).to_not have_content 'CATEGORIES'
-    expect(page).to have_content 'LOG IN'
+    expect(page).to have_content 'Email'
   end
 
   it 'I can access this page if user is connected' do
@@ -33,7 +34,7 @@ RSpec.describe 'categories/1/exchanges', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit category_exchanges_path @cat1
@@ -47,7 +48,7 @@ RSpec.describe 'categories/1/exchanges', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit category_exchanges_path @cat1
@@ -55,7 +56,7 @@ RSpec.describe 'categories/1/exchanges', type: :system do
 
     click_button 'X'
 
-    expect(page).to have_content 'Snapscan'
+    expect(page).to have_content 'Forteresse'
     expect(page).to_not have_content 'CATEGORIES'
   end
 
@@ -65,7 +66,7 @@ RSpec.describe 'categories/1/exchanges', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit category_exchanges_path @cat1
@@ -81,7 +82,7 @@ RSpec.describe 'categories/1/exchanges', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit category_exchanges_path @cat3
@@ -95,7 +96,7 @@ RSpec.describe 'categories/1/exchanges', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit category_exchanges_path @cat1

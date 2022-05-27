@@ -13,7 +13,8 @@ RSpec.describe 'categories/index', type: :system do
     visit new_category_path
     expect(page).to_not have_content '<'
     expect(page).to_not have_content 'New category'
-    expect(page).to have_content 'LOG IN'
+    expect(page).to have_content 'Email'
+    expect(page).to have_content 'Password'
   end
 
   it 'I can access this page if user is connected' do
@@ -37,14 +38,14 @@ RSpec.describe 'categories/index', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit new_category_path
 
     click_button 'X'
 
-    expect(page).to have_content 'Snapscan'
+    expect(page).to have_content 'Forteresse'
     expect(page).to_not have_content 'CATEGORIES'
   end
 
@@ -54,17 +55,16 @@ RSpec.describe 'categories/index', type: :system do
     fill_in 'user_password',	with: '11111111'
     click_button 'Log in'
 
-    expect(page).to_not have_content 'Snapscan'
+    expect(page).to_not have_content 'Forteresse'
     expect(page).to have_content 'CATEGORIES'
 
     visit new_category_path
 
     fill_in 'category_name',	with: 'My category'
-    fill_in 'category_icon',	with: 'My icon'
+    fill_in 'category_icon',	with: 'https://cdn-icons-png.flaticon.com/512/175/175061.png'
     click_button 'Create Category'
 
     expect(page).to have_content 'CATEGORIES'
     expect(page).to have_content 'My category'
-    expect(page).to have_content 'My icon'
   end
 end
