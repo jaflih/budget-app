@@ -1,27 +1,38 @@
-<h2>Sign up</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<section class="mx-auto h-screen flex flex-col justify-center items-center">
+  <div class="bg-white p-8">
+    <div class="grow flex  flex-col justify-center items-center">
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'flex  flex-col') do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
+  <div class="field mb-8">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="field mb-8">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-  <div class="field">
+  <div class="field mb-8">
     <%= f.label :password %>
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-  <div class="field">
+  <div class="field mb-8">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-  <div class="actions">
+  <div class="actions blue p-6 text-white flex justify-center">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-<%= render "devise/shared/links" %>
+
+     
+    </div>
+    <div class="flex justify-center py-8 grey hover:bg-slate-400 hover:text-white"><%= link_to 'SIGN IN', new_user_registration_path %></div>
+  </div>
+</section>
+
+
+
