@@ -10,7 +10,7 @@
 
 ## Demo
 
-[Live Demo Link](https://powerful-everglades-80437.herokuapp.com/categories)
+[Live Demo Link](https://powerful-everglades-80437.herokuapp.com/)
 
 [Loom](https://loom.com/share/17446fca91a94de3948adc5a9ba1eda5)
 
