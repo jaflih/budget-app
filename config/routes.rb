@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :exchanges
-  resources :categories
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   root "home#home"
+
+  resources :categories, only: [:index, :new, :create]  do
+    resources :exchanges
+  end
+
 end

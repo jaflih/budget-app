@@ -36,3 +36,12 @@ h1 {
 .dark-grey {
   color: #3e4650;
 }
+
+img {
+  width: 15px;
+  margin: 0 10px;
+}
+
+button {
+  margin: 0 10px;
+}
