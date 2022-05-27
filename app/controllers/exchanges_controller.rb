@@ -4,7 +4,7 @@ class ExchangesController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @exchanges = @category.exchanges
+    @exchanges = @category.exchanges.order(created_at: :desc)
 
     redirect_to new_user_session_path, notice: 'Can not access this ressource' if @category.user != current_user
   end
