@@ -1,14 +1,10 @@
 <section class="flex flex-col h-screen">
   <div class="blue flex justify-between py-4 text-white">
     <img src="icons/bars-solid.svg" alt="menu">
-  <div>CATEGORIES</div>
-<%= button_to "X", destroy_user_session_path, method: :delete  %>
-  
-  
+    <div>CATEGORIES</div>
+    <%= button_to "X", destroy_user_session_path, method: :delete  %>
   </div>
-  <div class="blue flex justify-center py-2 text-white ">Most Recent - Most ancien</div>
   <p style="color: green" class="py-2"><%= notice %></p>
-
   <div id="categories" class="grow">
     <% @categories.each do |category| %>
       <%= link_to category_exchanges_path category do %>
@@ -18,4 +14,3 @@
   </div>
   <div class="bg-lime-500 flex justify-center py-2 text-white"><%= link_to "Add a new category", new_category_path %></div>
 </section>
-
