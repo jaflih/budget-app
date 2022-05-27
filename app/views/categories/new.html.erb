@@ -1,9 +1,14 @@
-  <div class="blue flex justify-center py-4 text-white"><%= link_to "Back", categories_path %></div>
+  <div class="blue flex justify-between p-6 text-white">
+    <div class="justify-self-start"><%= link_to "<", categories_path %></div>
+    <div>Create new category</div>
+<%= button_to "X", destroy_user_session_path, method: :delete  %>
+</div>
+  
+  </div>
 
 <section class="mx-auto h-screen flex flex-col justify-center items-center">
   <div class="bg-white p-8">
     <div class="grow flex  flex-col justify-center items-center">
-      <h1>New category</h1>
       <%= render "form", category: @category %>
 
     </div>
