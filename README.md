@@ -32,12 +32,6 @@ bundle install
 rails db:migrate
 ```
 
-### Run the seeder
-
-```
-rails db:seed
-```
-
 ### Run the app
 
 - To run the app
