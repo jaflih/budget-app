@@ -40,15 +40,6 @@ RSpec.describe '/exchanges', type: :request do
         expect(response).to redirect_to(category_exchanges_path(cat1))
       end
     end
-
-    context 'with invalid parameters' do
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        cat1 = Category.create(name: 'Category_1', icon: 'icon_1', user_id: user.id)
-
-        post category_exchanges_path cat1, params: { exchange: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
   end
 end
 
