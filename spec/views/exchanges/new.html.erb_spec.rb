@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'categories/index', type: :system do
+RSpec.describe 'categories/1/exchanges/new', type: :system do
   before(:each) do
-    User.create(name: 'Ally', email: 'ally@recipe.com', password: '11111111')
+    ally = User.create(name: 'Ally', email: 'ally@recipe.com', password: '11111111')
+    @cat1 = Category.create(name: 'Category_1', icon: 'icon_1', user: ally)
   end
 
   after(:each) do
@@ -10,9 +11,9 @@ RSpec.describe 'categories/index', type: :system do
   end
 
   it 'I can not access this page if user is not connected.' do
-    visit new_category_path
+    visit new_category_exchange_path @cat1
     expect(page).to_not have_content '<'
-    expect(page).to_not have_content 'New category'
+    expect(page).to_not have_content 'New exchange'
     expect(page).to have_content 'LOG IN'
   end
 
@@ -24,10 +25,10 @@ RSpec.describe 'categories/index', type: :system do
 
     expect(page).to have_content 'CATEGORIES'
 
-    visit new_category_path
+    visit new_category_exchange_path @cat1
 
     expect(page).to have_content '<'
-    expect(page).to have_content 'Create new category'
+    expect(page).to have_content 'Create new exchange'
     expect(page).to_not have_content 'LOG IN'
   end
 
@@ -40,7 +41,7 @@ RSpec.describe 'categories/index', type: :system do
     expect(page).to_not have_content 'Snapscan'
     expect(page).to have_content 'CATEGORIES'
 
-    visit new_category_path
+    visit new_category_exchange_path @cat1
 
     click_button 'X'
 
@@ -48,7 +49,7 @@ RSpec.describe 'categories/index', type: :system do
     expect(page).to_not have_content 'CATEGORIES'
   end
 
-  it 'I can create a new  category' do
+  it 'I can create a new  exchange' do
     visit new_user_session_path
     fill_in 'user_email',	with: 'ally@recipe.com'
     fill_in 'user_password',	with: '11111111'
@@ -57,14 +58,14 @@ RSpec.describe 'categories/index', type: :system do
     expect(page).to_not have_content 'Snapscan'
     expect(page).to have_content 'CATEGORIES'
 
-    visit new_category_path
+    visit new_category_exchange_path @cat1
 
-    fill_in 'category_name',	with: 'My category'
-    fill_in 'category_icon',	with: 'My icon'
-    click_button 'Create Category'
+    fill_in 'exchange_name',	with: 'My exchange'
+    fill_in 'exchange_amount',	with: 12.8
+    click_button 'Create Exchange'
 
-    expect(page).to have_content 'CATEGORIES'
-    expect(page).to have_content 'My category'
-    expect(page).to have_content 'My icon'
+    expect(page).to have_content 'All transaction for'
+    expect(page).to have_content 'My exchange'
+    expect(page).to have_content '12.8'
   end
 end

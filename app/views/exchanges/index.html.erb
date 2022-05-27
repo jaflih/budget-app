@@ -1,18 +1,15 @@
-<p style="color: green"><%= notice %></p>
-<section>
-  <div class="blue flex justify-center py-4 text-white"><%= link_to "Back", categories_path %></div>
-  <div class="blue flex justify-center py-2 text-white ">CATEGORY name</div>
-  <div class="bg-white flex justify-center py-2 text-black ">total amount for the category</div>
-  <div id="exchanges">
+<section class="flex flex-col h-screen">
+  <div class="blue flex justify-between p-6 text-white">
+    <div class="justify-self-start"><%= link_to "<", categories_path %></div>
+    <div>All transaction for <%= @category.name %> </div>
+    <%= button_to "X", destroy_user_session_path, method: :delete  %>
+  </div>
+  <div class="bg-white flex justify-center py-2 text-black ">TOTAL : <%=@category.total_amount%>$ </div>
+  <div id="exchanges" class="grow">
+    <p style="color: green" class="py-2"><%= notice %></p>
     <% @exchanges.each do |exchange| %>
-      <div class="bg-white flex p-5 m-6 py-8 text-black ">
-        <div class="basis-16"><%= exchange.amount%></div>
-        <div><%= exchange.name%></div>
-        <div>price</div>
-        <%= render exchange %>
-      </div>
+      <%= render exchange %>
     <% end %>
   </div>
-  <div class="bg-lime-500 flex justify-center py-2 text-white"><%= link_to "New exchange", new_exchange_path %>
-  </div>
+  <div class="bg-lime-500 flex justify-center py-2 text-white"><%= link_to "New exchange", new_category_exchange_path(@category) %></div>
 </section>

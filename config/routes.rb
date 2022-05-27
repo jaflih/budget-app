@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "home#home"
 
   resources :categories, only: [:index, :new, :create]  do
-    resources :exchanges
+    resources :exchanges, only: [:index, :new, :create]
   end
 
 end
