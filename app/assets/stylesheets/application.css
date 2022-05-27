@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+@import url(//db.onlinewebfonts.com/c/0376a58122a881d16a294512d3c947b1?family=ProximaNova-Regular);
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lato&display=swap');
+
+body {
+  background-color: #f1f3f2;
+}
+
+h1 {
+  font-family: 'Dancing Script', sans-serif;
+}
+
+.blue {
+  background-color: #3979c3;
+}
+
+.grey {
+  color: #abacae;
+}
+
+.dark-grey {
+  color: #3e4650;
+}
